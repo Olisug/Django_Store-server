@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{%load static%}
+
+
+{%block content%}
+  <div class='categories'>
+    <h4>Категории</h4>
+    {%for category in categories %}
+      <li><a href="{% url 'products:category' category.id%}">{{category.name}}</a></li>
+    {%endfor%}
+  </div>
+  <div class='paginator-up'>
+    {% include "includes/paginator.html" %}
+  </div>
+  {%if object_list %}
+    {% for product in object_list %}
+      <div class='recipe-container'><hr>
+        <div class='one-recipe'>
+          <li>Наименование: {{product.name}}</li>
+          <li>Категория: {{product.category}}</li>
+          <li>Описание: {{product.description}}</li>
+          <li>Цена: {{product.price}}</li>
+          {% if product.image %}<img src="{{product.image.url}}" height=10% width=10%>{%endif%}
+          {%if request.user.is_authenticated%}
+            <li><a href="{% url 'products:basket_add' product.id%}">Добавить в корзину</a></li>
+            {%if request.user.is_staff %}
+              <li><a href="{% url 'products:edit_product' product.id%}">Редактировать товар</a></li>
+              <li><a href="{% url 'products:delete_product' product.id%}">Удалить товар</a></li>
+            {%endif%}
+          {%else%}
+            Зарегистрируйтесь или войдите в аккаунт, чтобы добавлять продукты в корзину
+          {%endif%}
+        </div>
+      </div>
+    {%endfor%}
+  {%else%}
+    {% for product in page_obj %}
+      <div class='recipe-container'><hr>
+        <div class='one-recipe'>
+          <li>Наименование: {{product.name}}</li>
+          <li>Категория: {{product.category}}</li>
+          <li>Описание: {{product.description}}</li>
+          <li>Цена: {{product.price}}</li>
+          {% if product.image %}<img src="{{product.image.url}}" height=10% width=10%>{%endif%}
+          <li>
+            {%if request.user.is_authenticated%}
+              <a href="{% url 'products:basket_add' product.id%}">Добавить в корзину</a>
+            {%else%}
+              Зарегистрируйтесь или войдите в аккаунт, чтобы добавлять продукты в корзину
+            {%endif%}
+          </li>
+          {%if request.user.is_staff %}
+            <li><a href="{% url 'products:edit_product' product.id%}">Редактировать товар</a></li>
+            <li><a href="{% url 'products:delete_product' product.id%}">Удалить товар</a></li>
+          {%endif%}
+        </div>
+      </div>
+    {%endfor%}
+  {%endif%}
+    <div class='paginator-down'>
+      {% include "includes/paginator.html" %}
+    </div>
+{%endblock%}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{%load static%}
+{% block title %}
+  <title>Главная страница</title>
+{% endblock %}
+
+{%block content%}
+  <div class='categories'>
+    <h4>Категории</h4>
+    {%for category in categories %}
+      <li><a href="{% url 'products:category' category.id%}">{{category.name}}</a></li>
+    {%endfor%}
+  </div>
+  <div class='paginator-up'>
+    {% include "includes/paginator.html" %}
+  </div>
+  {% for product in page_obj %}
+    <div class='recipe-container'><hr>
+      <div class='one-recipe'>
+        <li>Наименование: {{product.name}}</li>
+        <li>Описание: {{product.description}}</li>
+        <li>Цена: {{product.price}}</li>
+        {% if product.image %}<img src="{{product.image.url}}" height=10% width=10%>{%endif%}
+          <li><a href="{% url 'products:basket_add' product.id%}">Добавить в корзину</a></li>
+        {%if request.user.is_staff %}
+          <li><a href="{% url 'products:edit_product' product.id%}">Редактировать товар</a></li>
+          <li><a href="{% url 'products:delete_product' product.id%}">Удалить товар</a></li>
+        {%endif%}
+      </div>
+    </div>
+  {%endfor%}
+  <div class='paginator-down'>
+    {% include "includes/paginator.html" %}
+  </div>
+{%endblock%}

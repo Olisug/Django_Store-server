@@ -1,0 +1,226 @@
+.header {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding: 10px;
+    height: 80px;
+    width: 100%;
+    font-size: 15px;
+    font-family: "Arial", sans-serif;
+    background-color: #7fcff8;
+    justify-content: space-between;
+
+  }
+
+/* Эмблема */
+.container_emblem {
+  width: 80px;
+  margin-left: 50px;
+}
+
+.emblem {
+  width: 100%;
+}
+
+.emblem_github {
+  width: 3%;
+  height: 3%;
+}
+
+.emblem_admin {
+  width: 20px;
+  height: 20px;
+}
+
+/* Поисковая строка */
+.container_search {
+  width: 250px;
+  margin-left: 500px;
+  margin-top: 30px;
+}
+
+/* Кнопки */
+.container_buttons {
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  width: 180px;
+  margin-right: 100px;
+}
+
+.button_register {
+  height: 30px;
+  width: 90px;
+  margin-right: 50px;
+  box-sizing: border-box;
+  border-color: #2397d0;
+  color: white;
+  background-color:  #7fcff8;
+}
+
+.button_enter {
+  height: 30px;
+  width: 90px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border-color: #2397d0;
+  color: white;
+  background-color: #7fcff8;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  height: 30px;
+  width: 90px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border-color: #2397d0;
+  outline: none;
+  color: white;
+  background-color: #7fcff8;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: #2397d0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* Основной контент */
+.cointeiner_content {
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  color: #000000;
+  background-color: rgb(255, 255, 255);
+}
+
+.cointeiner_content .categories {
+  padding-left: 3%;
+  padding-top: 5px;
+}
+
+
+.cointeiner_content .recipe-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cointeiner_content .recipe-container .one-recipe {
+  display: inline-block;
+  left:50%;
+  padding-left: 43%;
+  padding-right: 10%;
+}
+
+.cointeiner_content .paginator-down {
+  margin-left: 43%;
+  padding-bottom: 5%;
+}
+
+.cointeiner_content .paginator-up {
+  margin-left: 43%;
+  padding-bottom: 0;
+}
+
+.body {
+  margin: 0;
+
+}
+
+.ul, li {
+  list-style: none;
+}
+
+.container_form_email {
+  margin: 10px;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  outline: 2px solid rgb(214, 213, 213); 
+  outline-offset: 50px}
+
+.form_email {
+  width:150px;
+  margin-top: 3px;
+  display:inline-block;
+  float: left;
+  padding:3px;
+}
+
+
+.container_form {
+  position: relative;
+  width: 680px;
+  height: 430px;
+  top: 50%;
+  left: 0%;
+  margin-left: 25%;
+  margin-top: 0%;
+  padding-left: 10px;
+  padding-top: 10px;
+  border: 5px solid #a7a9ac;
+}
+
+.container_form h3{
+  text-align: center;
+}
+
+.container_form .container_form_login{
+  display: inline-block;
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+}
+
+.container_form .github {
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  text-align: center;
+}
+
+.form {
+  width:150px;
+  margin-top: 3px;
+  display:inline-block;
+  float: left;
+  padding:3px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='ru'>
+{%load static%}
+<link rel='stylesheet' href='/static/css/stylesheet.сss' type="text/css">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/stylesheet.css' %}">
+    {% comment %} <link rel='stylesheet' href='/static/css/stylesheet.сss' type="text/css"> {% endcomment %}
+    {%block title%}
+      <title>{{title}}</title>
+    {%endblock%}
+  </head>
+
+  <body class='body'>
+    <header class='header'>
+      <div class='container_emblem'>
+        <a href="{% url 'products:index'%}"><img class='emblem' src="{% static 'img/emblem.png' %}"></a></div>
+      <div class='container_search'>
+        <form action="{% url 'products:search' %}" method="get">
+          <input name="q" type="text" placeholder="Поиск...">
+          <input type="submit" value="Искать" />
+        </form></div>
+      <div class='container_buttons'>
+        {%if request.user.is_authenticated%}
+          <div class="dropdown">
+            <button class="dropbtn">Настройки<i class="fa fa-caret-down"></i></button>
+              <div class="dropdown-content">
+                {%if request.user.is_staff %}
+                <h5>Вы зашли как {{request.user.username}} "Модератор" </h5>
+                <a href="{% url 'products:create_product'%}">Редактировать каталог</a>
+                <a href="{% url 'products:basket'%}">Корзина</a>
+                <a href="{% url 'users:password_change'%}">Поменять пароль</a>
+                <a href="{% url 'users:send_email_to_tp'%}">Тех.поддержка</a>
+                <a href="{% url 'users:logout'%}">Выход</a>
+                {%else%}
+                <h5>Вы зашли как {{request.user.username}}</h5>
+                <a href="{% url 'products:basket'%}">Корзина</a>
+                <a href="{% url 'users:password_change'%}">Поменять пароль</a>
+                <a href="{% url 'users:send_email_to_tp'%}">Тех.поддержка</a>
+                <a href="{% url 'users:logout'%}">Выход</a>
+                {%endif%}
+              </div>
+          </div>
+        {%else%}
+          <a href="{% url 'users:login'%}"><button type='button' class='button_enter'>Войти</button></a>
+          <a href="{% url 'users:registration'%}"><button type='button' class='button_register'>Регистрация</button></a>
+        {%endif%}</div>
+    </header>
+
+    <main>
+      <div class='cointeiner_content'>
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+  </body>
+</html>

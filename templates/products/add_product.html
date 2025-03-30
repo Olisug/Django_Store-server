@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load static %}
+
+{%block content%}
+  <div class='container_form'>
+    <h3>Добавление товара</h3>
+    <div class='container_form_login'>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+      </form>
+    
+  </div>
+  </div>
+{%endblock%}

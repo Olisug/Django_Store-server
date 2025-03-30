@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{%block content%}
+   {% if products_in_basket %}
+   <h4>Общая сумма к оплате: {{products_in_basket.total_sum}}</h4>
+   <h4>Число товаров: {{products_in_basket.total_quantity}}</h4>
+        {% for product in products_in_basket %}
+            <div class='recipe-container'><hr>
+            <div class='one-recipe'>
+            <li>Наименование: {{product.product.name}}</li>
+            <li>Категория: {{product.product.category}}</li>
+            <li>Описание: {{product.product.description}}</li>
+            <li>Цена: {{product.product.price}}</li>
+            {% if product.product.image %}<img src="{{product.product.image.url}}" height=10% width=10%>{%endif%}
+            <li>Количество товара:{{product.quantity}}</li>
+            <li>Общая стоимость товара: {{product.sum}}</li>
+            <li><a href="{% url 'products:basket_remove' product.id%}">Убрать товар из корзины</a></li>
+            </div>
+            </div>
+        {%endfor%}
+    {%else%}
+        <h4>Корзина пуста</h4>
+    {%endif%}
+{%endblock%}

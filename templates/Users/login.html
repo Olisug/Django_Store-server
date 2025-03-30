@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load socialaccount %}
+{% load static %}
+
+{%block content%}
+  <div class='container_form'>
+    <h3>Вход</h3>
+    <div class='container_form_login'>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+    <div class='github'>
+      Вы можете войти через свой аккаунт на GitHub
+      <a href="{% provider_login_url 'github' %}"><img class='emblem_github' src="{% static 'img/github.png' %}"></a>
+    </div>
+  </div>
+{%endblock%}

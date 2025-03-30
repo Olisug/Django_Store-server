@@ -1,0 +1,11 @@
+{% if page_obj.has_other_pages %}
+    <ul>
+      {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+            <span>{{ i }}</span>
+        {% else %}
+            <a href="?page={{ i }}">{{ i }}</a>
+        {% endif %}
+      {% endfor %}
+    </ul>
+{% endif %} 
